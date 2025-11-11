@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bgprim {
+    background: #10151a;
+}
+
+.bgsec {
+    background: #1f2e3d;
+}
+
+.fontmain {
+    color: white;
+    font-family: "verdana";
+    font-weight: 800;
+}
