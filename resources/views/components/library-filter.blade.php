@@ -1,9 +1,12 @@
-<form class="w-full min-w-[200px]">
+<form class="w-full min-w-[200px]" method="GET" action="{{ route('library.index') }}">
     @csrf
     <div class="flex items-center">
         <input
-            class="w-full bgprim fontmain border-0 rounded-md "
+            class="w-full bgprim fontmain border-0 rounded-md"
+            name="search"
             placeholder="Title or genre"
+            type="text"
+            value="{{ request('search') }}"
         />
 
         <button

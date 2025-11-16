@@ -33,9 +33,6 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Library routes
-//Route::get('/library', function () {
-//    return view('library');
-//})->middleware(['auth'])->name('library');
+Route::resource('library', MoviesController::class);
 
-Route::get ('/library', [MoviesController::class, 'index']) ->name('library');
 

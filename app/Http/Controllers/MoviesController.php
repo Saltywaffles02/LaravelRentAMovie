@@ -6,6 +6,7 @@ use App\Models\Movie;
 use App\Models\Genre;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
+use Illuminate\Http\Request;
 
 
 class MoviesController extends Controller
@@ -13,12 +14,20 @@ class MoviesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::all();
-        $genres = Genre::all();
+        $search = $request->input('search');
 
-        return view('library', compact('movies', 'genres'));
+        $movies = Movie::query()
+            ->when($search, function ($query, $search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhereHas('genres', function ($q) use ($search) {
+                        $q->where('genre_name', 'like', "%{$search}%");
+                    });
+            })
+            ->get();
+
+        return view('library', compact('movies'));
     }
 
     /**
