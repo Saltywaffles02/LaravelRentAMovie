@@ -3,13 +3,25 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
+// Auth routes
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// User dashboard
 Route::get('/dashboard', function () {
+    if(auth()->user()->role === 'admin'){
+        return redirect()->route('admin.dashboard');
+    }
+
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Admin dashboard
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
