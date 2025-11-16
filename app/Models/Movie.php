@@ -10,11 +10,14 @@ class Movie extends Model
     /** @use HasFactory<\Database\Factories\MovieFactory> */
     use HasFactory;
 
-    protected $primaryKey = 'movie_id';
     protected $fillable = [
         'title',
         'description',
         'price',
         'poster',
     ];
+
+    public function genres() {
+        return $this->belongsToMany(Genre::class);
+    }
 }
