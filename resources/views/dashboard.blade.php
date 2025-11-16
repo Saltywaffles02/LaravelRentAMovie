@@ -44,7 +44,8 @@
                     <div class="mt-6">
                         <p class="p-2">Check the weather since there is never a better excuse than the weather :)</p>
                         <div>
-
+                            <h2 class="text-2xl font-bold mb-4">Current Weather</h2>
+                            <x-weather :temperature="$weatherData['temperature']" :description="$weatherData['description']" :icon="$weatherData['icon']" :city="$weatherData['city']"/>
                         </div>
                     </div>
                 </div>
