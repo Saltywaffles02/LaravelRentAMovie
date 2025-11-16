@@ -11,7 +11,7 @@
                 <div class="p-6 grid lg:grid-cols-3 md:grid-cols-2 gap-4 content-evenly">
                     @foreach($movies as $movie)
                         <div class="w-full rounded overflow-hidden shadow-lg bgsec fontmain">
-                            <img class="w-full" src="{{$movie->poster}}" alt="Movie poster">
+                            <img class="w-full" src="{{ asset('storage/' . $movie->poster) }}" alt="Movie poster">
                             <div class="px-6 py-4">
                                 <div class="font-bold text-xl mb-2">{{ $movie->title }}</div>
                                 <p class="text-gray-400 text-base">

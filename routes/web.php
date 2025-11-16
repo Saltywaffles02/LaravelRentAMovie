@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\http\Controllers\MoviesController;
+use App\http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,9 +21,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Admin dashboard
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    // Dashboard
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    // Movie CRUD
+    Route::get('/movies/create', [AdminController::class, 'moviesCreate'])->name('admin.movies.create');
+    Route::post('/movies/store', [AdminController::class, 'moviesStore'])->name('admin.movies.store');
+    Route::get('/movies/{movie}/edit', [AdminController::class, 'moviesEdit'])->name('admin.movies.edit');
+    Route::put('/movies/{movie}', [AdminController::class, 'moviesUpdate'])->name('admin.movies.update');
+    Route::delete('/movies/{movie}', [AdminController::class, 'moviesDelete'])->name('admin.movies.delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
