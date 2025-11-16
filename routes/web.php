@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\http\Controllers\MoviesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,3 +31,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Library routes
+//Route::get('/library', function () {
+//    return view('library');
+//})->middleware(['auth'])->name('library');
+
+Route::get ('/library', [MoviesController::class, 'index']) ->name('library');
+
