@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
 
@@ -15,7 +16,9 @@ class MoviesController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('library', compact('movies'));
+        $genres = Genre::all();
+
+        return view('library', compact('movies', 'genres'));
     }
 
     /**
