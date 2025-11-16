@@ -20,4 +20,8 @@ class Movie extends Model
     public function genres() {
         return $this->belongsToMany(Genre::class);
     }
+
+    public function users() {
+        return $this->belongsToMany(User::class , 'movies_rented', 'user_id', 'movie_id');
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\http\Controllers\MoviesController;
 use App\http\Controllers\AdminController;
+use App\http\Controllers\UserdashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,13 +13,9 @@ Route::get('/', function () {
 });
 
 // User dashboard
-Route::get('/dashboard', function () {
-    if(auth()->user()->role === 'admin'){
-        return redirect()->route('admin.dashboard');
-    }
-
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [UserDashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // Admin dashboard
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
@@ -43,5 +40,10 @@ require __DIR__.'/auth.php';
 
 // Library routes
 Route::resource('library', MoviesController::class);
+
+Route::post('/library/{movie}/rent', [MoviesController::class, 'rent'])
+    ->middleware('auth')
+    ->name('library.rent');
+
 
 

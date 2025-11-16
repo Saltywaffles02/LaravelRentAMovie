@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\Genre;
+use App\Models\User;
 use App\Http\Requests\StoreMoviesRequest;
 use App\Http\Requests\UpdateMoviesRequest;
 use Illuminate\Http\Request;
@@ -43,7 +43,7 @@ class MoviesController extends Controller
      */
     public function store(StoreMoviesRequest $request)
     {
-        //
+
     }
 
     /**
@@ -77,4 +77,22 @@ class MoviesController extends Controller
     {
         //
     }
+    /**
+     * Rent a movie option.
+     */
+    public function rent(Request $request, Movie $movie)
+    {
+        $user = auth()->user();
+
+        // Prevent duplicates
+        if ($user->movies()->where('movie_id', $movie->id)->exists()) {
+            return back()->with('error', 'You already rented this movie.');
+        }
+
+        // Create pivot entry
+        $user->movies()->attach($movie->id);
+
+        return redirect()->route('dashboard')->with('success', 'Movie rented successfully!');
+    }
+
 }

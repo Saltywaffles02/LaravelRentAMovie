@@ -27,9 +27,12 @@
                                     @endforeach
                                 </div>
                                 <div class="px-6 py-4">
-                                    <button class="bg-transparent hover:bg-green-700  py-2 px-4 border border-green-700 hover:border-transparent rounded">
-                                        Rent me
-                                    </button>
+                                    <form action="{{ route('library.rent', $movie->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-transparent hover:bg-green-700  py-2 px-4 border border-green-700 hover:border-transparent rounded">
+                                            Rent me
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
