@@ -1,5 +1,5 @@
-<div class="w-full p-12 px-12 flex justify-center">
-    <nav x-data="{ open: false }" class=" w-4/6 bgsec rounded-xl shadow-md border-gray-100">
+<div class="w-full sm:p-12 sm:px-12 flex justify-center">
+    <nav x-data="{ open: false }" class=" w-full max-w-7xl bgsec sm:rounded-xl shadow-md">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">

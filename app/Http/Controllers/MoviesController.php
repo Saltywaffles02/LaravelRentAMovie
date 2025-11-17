@@ -25,7 +25,8 @@ class MoviesController extends Controller
                         $q->where('genre_name', 'like', "%{$search}%");
                     });
             })
-            ->get();
+            ->paginate(15)
+            ->appends(['search' => $search]);
 
         return view('library', compact('movies'));
     }

@@ -20,9 +20,9 @@ class MovieFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(2,5),
             'price' => $this->faker->randomFloat(2, 1, 20),
-            'poster' => 'images/card-top.jpg',
+            'poster' => null,
         ];
     }
 }

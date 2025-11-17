@@ -21,8 +21,8 @@ class MovieGenreSeeder extends Seeder
         // Loop over every movie
         Movie::all()->each(function ($movie) use ($allGenres) {
 
-            // Pick between 2–5 random genres for this movie
-            $randomGenres = collect($allGenres)->random(rand(2, 5));
+            // Pick between 2–3 random genres for this movie
+            $randomGenres = collect($allGenres)->random(rand(2, 3));
 
             // Attach them
             $movie->genres()->sync($randomGenres);

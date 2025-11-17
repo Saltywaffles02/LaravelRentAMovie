@@ -30,7 +30,7 @@
                     {{ $genre->genre_name }},
                 @endforeach
             </td>
-            <td class="px-6 py-4 lg:table-cell hidden">
+            <td class="px-6 py-4 lg:table-cell hidden overflow-hidden max-w-[250px]">
                 {{ $movie->poster }}
             </td>
             <td class="px-6 py-4 md:table-cell hidden">

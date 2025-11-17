@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="fontmain text-gray-900">
-        <div class="min-h-screen flex lg:flex-row flex-col lg:justify-around items-center pt-6 sm:pt-0 bgprim">
+    <body class="fontmain bg-gradient-to-b from-purple-700 from-0% to-[#10151a] to-[75%]">
+        <div class="min-h-screen flex lg:flex-row flex-col lg:justify-around items-center pt-6 sm:pt-0">
             <div>
                 <a href="/">
                     <x-application-logo class="w-12 h-12" />
