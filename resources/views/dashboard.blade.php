@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bgsec overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 fontmain">
-                    <h2 class="text-3xl mb-4">Het smoesjes hoekje</h2>
+                    <h2 class="text-3xl mb-4">The excuses corner</h2>
                     <p>
                         We present you a list of excuses you can use to stay inside and watch your favorite movies!
                     </p>
