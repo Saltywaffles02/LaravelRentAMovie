@@ -24,9 +24,5 @@ Make sure you have the following installed:
 - A library containing all the movies avaliable on the website with filter options for titles and genres
 - An admin dashboard for adding, updating and deleting movies
 
-## 🤖 AI used
-- Openweather API because it was the first time adding however I did get halfway on my own.
-- Mundane tasks like creating the contents in a factory, seeders or forms used within the application after already building the models and migrations.
-- Middleware for verifying the admin roles on users.
 
 
